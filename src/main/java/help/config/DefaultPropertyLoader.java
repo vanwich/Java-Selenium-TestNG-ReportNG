@@ -6,7 +6,7 @@ import java.util.Properties;
 import org.apache.commons.lang3.StringUtils;
 
 public class DefaultPropertyLoader implements PropertyLoader{
-    private static final String ROOT_FOLDER = "help/config";
+    private static final String ROOT_FOLDER = "config";
     private static final String MAIN_PROPERTIES = ROOT_FOLDER + "/config.properties";
     private static final String PROJECT_PROPERTIES = ROOT_FOLDER + "/project.properties";
     private static final String LOCAL_PROPERTIES = ROOT_FOLDER + "/local.properties";

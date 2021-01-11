@@ -25,7 +25,7 @@ public class ClassConfigurator {
     private static final Logger LOG = LoggerFactory.getLogger(ClassConfigurator.class);
 
     //配置文件存放位置。
-    private static final String configStoreResourceDir = "help/config/class";
+    private static final String configStoreResourceDir = "config/class";
     private static final Optional<String> configStoreOverride = Optional.ofNullable(PropertyProvider.getProperty(TestProperties.CLASS_CONFIGURATION_OVERRIDE_PATH, null));
     private static final Set<Class<?>> alreadyConfiguredClasses = new HashSet<>();
 

@@ -22,7 +22,7 @@ public class MainApplication extends Application {
         this.path = PropertyProvider.getProperty(APP_PATH, "ipb-app");
         this.port = PropertyProvider.getProperty(APP_PORT, -1);
         this.protocol = PropertyProvider.getProperty(APP_PROTOCOL, "http");
-        Boolean loginThroughUrl = PropertyProvider.getProperty(CustomTestProperties.APP_URL_LOGIN, false);
+        Boolean loginThroughUrl = PropertyProvider.getProperty(APP_URL_LOGIN, false);
         this.login = new LoginPage(PropertyProvider.getProperty(APP_USER),
                 PropertyProvider.getProperty(APP_PASSWORD), this.formatUrl(), loginThroughUrl);
     }
