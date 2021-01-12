@@ -175,13 +175,19 @@
         <groupId>org.apache.pdfbox</groupId>
       <artifactId>pdfbox</artifactId>
       <version>1.8.10</version>
+        </dependency>
+            <!-- https://mvnrepository.com/artifact/org.json/json -->
+            <dependency>
+          <groupId>org.json</groupId>
+          <artifactId>json</artifactId>
+          <version>20200518</version>
     </dependency>
-        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
         <dependency>
-      <groupId>org.json</groupId>
-      <artifactId>json</artifactId>
-      <version>20200518</version>
-    </dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-tx</artifactId>
+    <version>5.3.2</version>
+</dependency>
 
     </dependencies>
 
