@@ -1,0 +1,208 @@
+{
+    "restTargets": {
+
+        "QUICKQUOTE.AUTO.CREATE": {
+            "target": "/quickquote-auto/v1/quotes",
+            "methods": {
+                "POST" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO": {
+            "target": "/quickquote-auto/v1/quotes/{policyNumber}",
+            "methods": {
+                "GET" : {
+                    "mediaType": "application/json"
+                },
+                "PUT" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.RATE": {
+            "target": "/quickquote-auto/v1/quotes/{policyNumber}/rate",
+            "methods": {
+                "POST" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.VALIDATE": {
+            "target": "/quickquote-auto/v1/quotes/{quoteNumber}/validate",
+            "methods": {
+                "POST" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.LOOKUPS": {
+            "target": "/quickquote-auto/v1/lookups/{lookupName}",
+            "methods": {
+                "GET" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.LOOKUPS.ATTRIBUTES": {
+            "target": "/quickquote-auto/v1/lookups/{lookupName}/attributes",
+            "methods": {
+                "GET" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.LOOKUPS.SEARCH": {
+            "target": "/quickquote-auto/v1/lookups/search",
+            "methods": {
+                "GET" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.VEHICLES": {
+            "target": "/quickquote-auto/v1/vehicles",
+            "methods": {
+                "GET" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.MAKES": {
+            "target": "/quickquote-auto/v1/vehicles/{year}/makes",
+            "methods": {
+                "GET" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.MAKES.MODELS": {
+            "target": "/quickquote-auto/v1/vehicles/{year}/makes/{make}/models",
+            "methods": {
+                "GET" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.MAKES.MODELS.VEHICLE": {
+            "target": "/quickquote-auto/v1/vehicles/{year}/makes/{make}/models/{model}",
+            "methods": {
+                "GET" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.MAKES.MODELS.STYLES": {
+            "target": "/quickquote-auto/v1/vehicles/{year}/makes/{make}/models/{model}/styles",
+            "methods": {
+                "GET" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.VEHICLES.YEARS": {
+            "target": "/quickquote-auto/v1/vehicles/years",
+            "methods": {
+                "GET" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.FIND.VEHICLES": {
+            "target": "/quickquote-auto/v1/find-vehicles",
+            "methods": {
+                "GET" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.GET.VERSION": {
+            "target": "/quickquote-auto/v1/quotes/{policyNumber}/versions",
+            "methods": {
+                "GET" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.POST.VERSION": {
+            "target": "/quickquote-auto/v1/quotes/{policyNumber}/version",
+            "methods": {
+                "POST" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.PUT.ACTIVE.VERSION": {
+            "target": "/quickquote-auto/v1/quotes/{policyNumber}/active-version",
+            "methods": {
+                "PUT" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.GET.COMPULSORY.DOCUMENTS": {
+            "target": "/quickquote-auto/v1/quotes/compulsory-documents",
+            "methods": {
+                "GET" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.GET.PACKAGES": {
+            "target": "/quickquote-auto/v1/packages",
+            "methods": {
+                "GET" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.VALIDATE.REGISTRATION.NUMBER": {
+            "target": "/quickquote-auto/v1/validate/registration-number",
+            "methods": {
+                "POST" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.PACKAGE.PACKAGECD.VALUES": {
+            "target": "/quickquote-auto/v1/packages/{packageCd}/values",
+            "methods": {
+                "POST" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.QUOTE.POLICY": {
+            "target": "/quickquote-auto/v1/quote-policy",
+            "methods": {
+                "POST" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.QUOTES.HOTAI.QUICK.RATE": {
+            "target": "/quickquote-auto/v1/quotes/rate",
+            "methods": {
+                "POST" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.UW.RULES": {
+            "target": "/quickquote-auto/v1/quotes/{policyNumber}/uw-rules",
+            "methods": {
+                "GET" : {
+                    "mediaType": "application/json"
+                }
+            }
+        },
+        "QUICKQUOTE.AUTO.B2C.CISP": {
+            "target": "/quickquote-auto/v1/quotes/b2c-cisp/quote",
+            "methods": {
+                "POST" : {
+                    "mediaType": "application/json"
+                }
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-package org.moudles;
+package com.test;
 
 import org.testng.annotations.Test;
 import help.application.impl.MainApplication;

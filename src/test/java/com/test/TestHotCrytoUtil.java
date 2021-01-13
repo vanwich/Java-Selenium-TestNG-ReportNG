@@ -1,4 +1,4 @@
-package org.moudles;
+package com.test;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
