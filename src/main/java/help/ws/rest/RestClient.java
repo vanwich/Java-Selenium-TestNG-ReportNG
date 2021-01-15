@@ -32,11 +32,11 @@ public class RestClient {
     private static final Logger LOGGER = LoggerFactory.getLogger(RestClient.class);
 
     @Configurable
-    private static final String configurationPathTmpl = "rest/%s.configuration";
+    private static  String configurationPathTmpl = "rest/%s.configuration";
     @Configurable(byClassName = true)
-    private static final AbstractUriResolver uriResolver = new DefaultUriResolver();
+    private static AbstractUriResolver uriResolver = new DefaultUriResolver();
     @Configurable(byClassName = true)
-    private static final IRestServiceMetaData defaultMetaData = new ServiceMetaData();
+    private static  IRestServiceMetaData defaultMetaData = new ServiceMetaData();
 
     public enum HttpMethod {GET, POST, PUT, DELETE, HEAD, OPTIONS, PATCH, TRACE}
 

@@ -30,7 +30,7 @@ import rest.service.policy.modeling.auto.*;
 import rest.service.policy.modeling.quotes.PolicyResponse;
 
 public class DXPQuickquoteAutoService implements DXPQuickquoteProductAPI, EntityService {
-    public static final DXPQuickquoteAutoService INSTANCE = new DXPQuickquoteAutoService();
+    public static DXPQuickquoteAutoService INSTANCE = new DXPQuickquoteAutoService();
     private RestClient client;
     private static final String MODULE_NAME = "quickquote.auto";
     private static final String ALIAS = "QUICKQUOTE.AUTO";

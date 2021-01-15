@@ -1,0 +1,3 @@
+{
+    "uriResolver": "help.ws.rest.conf.BaseUriResolver"
+}
