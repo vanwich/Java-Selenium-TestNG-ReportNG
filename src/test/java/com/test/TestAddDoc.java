@@ -43,7 +43,7 @@ public class TestAddDoc
                 dataMap.put("d4", x.get(7));
                 dataMap.put("d5", x.get(8));
 
-                dataMap.put("s1", x.get(8).equals("NULL")? "  --":x.get(9));
+                dataMap.put("s1", x.get(9).equals("NULL")? "  --":x.get(9));
                 dataMap.put("s2", x.get(10).equals("NULL")? "  --":x.get(10));
                 dataMap.put("a1", x.get(11).equals("NULL")? "  --":x.get(11));
 
