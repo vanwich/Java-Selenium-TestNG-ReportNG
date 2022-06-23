@@ -1,11 +1,12 @@
 package com.test;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.ss.usermodel.*;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
+import help.utils.DateTimeUtils;
 
 /**
  * Unit test for simple App.
@@ -21,6 +23,7 @@ import freemarker.template.TemplateExceptionHandler;
 public class TestAddDoc
 {
     protected static final Logger LOGGER = LoggerFactory.getLogger(TestAddDoc.class);
+    private static final String DEMO_2022 = "demo2022";
     public Configuration configure=null;
 
     @Test
@@ -37,37 +40,41 @@ public class TestAddDoc
                 dataMap.put("name", x.get(1));
                 dataMap.put("dateTime", x.get(2));
 
-                dataMap.put("d1", getSznl(x.get(3), x.get(4)));
-                dataMap.put("d2", x.get(5));
-                dataMap.put("d3", x.get(6));
-                dataMap.put("d4", x.get(7));
-                dataMap.put("d5", x.get(8));
+                dataMap.put("d1", x.get(3).equals("NULL")? "--":getSznl(x.get(3), x.get(4)));
+                dataMap.put("d2", getValue(x, 5));
+                dataMap.put("d3", getValue(x, 6));
+                dataMap.put("d4", getValue(x, 7));
+                dataMap.put("d5", getValue(x, 8));
 
-                dataMap.put("s1", x.get(9).equals("NULL")? "  --":x.get(9));
-                dataMap.put("s2", x.get(10).equals("NULL")? "  --":x.get(10));
-                dataMap.put("a1", x.get(11).equals("NULL")? "  --":x.get(11));
+                dataMap.put("s1", getValue(x, 9));
+                dataMap.put("s2", getValue(x, 10));
+                dataMap.put("a1", getValue(x, 11));
 
-                dataMap.put("d6", getSznl(x.get(12), x.get(13)));
-                dataMap.put("d7", x.get(14));
-                dataMap.put("d8", x.get(15));
-                dataMap.put("d9", x.get(16));
-                dataMap.put("d0", x.get(17));
+                dataMap.put("d6", x.get(12).equals("NULL")? "--":getSznl(x.get(12), x.get(13)));
+                dataMap.put("d7", getValue(x, 14));
+                dataMap.put("d8", getValue(x, 15));
+                dataMap.put("d9", getValue(x, 16));
+                dataMap.put("d0", getValue(x, 17));
 
-                dataMap.put("s3", x.get(18).equals("NULL")? "  --":x.get(18));
-                dataMap.put("s4", x.get(19).equals("NULL")? "  --":x.get(19));
-                dataMap.put("a2", x.get(20).equals("NULL")? "  --":x.get(20));
+                dataMap.put("s3", getValue(x, 18));
+                dataMap.put("s4", getValue(x, 19));
+                dataMap.put("a2", getValue(x, 20));
 
-                createDoc(dataMap,"demo",String.format("D:\\demo\\class\\%s\\%s.doc",fileName, dataMap.get("name")));
+                createDoc(dataMap, DEMO_2022,String.format("D:\\demo\\class\\%s\\%s.doc",fileName, dataMap.get("name")));
             });
         });
+    }
+
+    private String getValue(List<String> list, int index){
+        return list.get(index).equals("NULL")? "--":list.get(index).replace(".0", "");
     }
 
     private String getSznl(String nian, String yue){
         String sznl;
         if(yue.equals("0")){
-            sznl = nian+"周岁";
+            sznl = nian.replace(".0", "")+"周岁";
         }else {
-            sznl = nian +"岁"+ yue +"月";
+            sznl = nian.replace(".0", "") +"岁"+ yue.replace(".0", "") +"月";
         }
         return sznl;
     }
@@ -208,14 +215,38 @@ public class TestAddDoc
                         case FORMULA:
                             temp = String.valueOf(cell.getCellFormula().trim());
                             break;
-//                        case Cell.CELL_TYPE_NUMERIC:
-//                            if (HSSFDateUtil.isCellDateFormatted(cell)) {
-//                                temp = DateUtil.parseToString(cell.getDateCellValue(),
-//                                        DateUtil.FORMAT_DATE);
-//                            } else {
-//                                temp = new DecimalFormat("#.######").format(cell.getNumericCellValue());
-//                            }
-//                            break;
+                        case NUMERIC:
+                            short format = cell.getCellStyle().getDataFormat();
+                            if (DateUtil.isCellDateFormatted(cell)) {
+                                SimpleDateFormat sdf = null;
+                                //System.out.println("cell.getCellStyle().getDataFormat()="+cell.getCellStyle().getDataFormat());
+                                if (format == 20 || format == 32) {
+                                    sdf = new SimpleDateFormat("HH:mm");
+                                } else if (format == 14 || format == 31 || format == 57 || format == 58) {
+                                    // 处理自定义日期格式：m月d日(通过判断单元格的格式id解决，id的值是58)
+                                    sdf = new SimpleDateFormat("yyyy-MM-dd");
+                                    double value = cell.getNumericCellValue();
+                                    Date date = org.apache.poi.ss.usermodel.DateUtil
+                                            .getJavaDate(value);
+                                    temp = sdf.format(date);
+                                }else {// 日期
+                                    sdf = new SimpleDateFormat("yyyy-MM-dd");
+                                }
+                                try {
+                                    temp = sdf.format(cell.getDateCellValue());// 日期
+                                } catch (Exception e) {
+                                    try {
+                                        throw new Exception("exception on get date data !".concat(e.toString()));
+                                    } catch (Exception e1) {
+                                        e1.printStackTrace();
+                                    }
+                                }finally{
+                                    sdf = null;
+                                }
+                            }  else {
+                                temp = String.valueOf(cell.getNumericCellValue());// 数值 这种用BigDecimal包装再获取plainString，可以防止获取到科学计数值
+                            }
+                            break;
                         case BLANK:
                             temp = "NULL";
                             break;
