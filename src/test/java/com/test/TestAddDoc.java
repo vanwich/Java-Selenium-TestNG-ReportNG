@@ -23,7 +23,7 @@ import help.utils.DateTimeUtils;
 public class TestAddDoc
 {
     protected static final Logger LOGGER = LoggerFactory.getLogger(TestAddDoc.class);
-    private static final String DEMO_2022 = "demo2022";
+    private static final String DEMO_2022 = "demo2023a";
     public Configuration configure=null;
 
     @Test
