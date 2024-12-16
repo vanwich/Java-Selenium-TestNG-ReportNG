@@ -23,7 +23,7 @@ import help.utils.DateTimeUtils;
 public class TestAddDoc
 {
     protected static final Logger LOGGER = LoggerFactory.getLogger(TestAddDoc.class);
-    private static final String DEMO_2022 = "demo2023a";
+    private static final String DEMO_2022 = "demo2024b";
     public Configuration configure=null;
 
     @Test
@@ -36,7 +36,9 @@ public class TestAddDoc
             List<List<String>> list = getExcelRows(getSheet(wb, 0), 1, -1);
             list.forEach(x->{
                 Map<String, Object> dataMap=new HashMap<String, Object>();
+                LOGGER.info("className: " + x.get(0));
                 dataMap.put("className", x.get(0));
+                LOGGER.info("name: " + x.get(1));
                 dataMap.put("name", x.get(1));
                 dataMap.put("dateTime", x.get(2));
 
