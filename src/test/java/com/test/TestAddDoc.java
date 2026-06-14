@@ -23,15 +23,15 @@ import help.utils.DateTimeUtils;
 public class TestAddDoc
 {
     protected static final Logger LOGGER = LoggerFactory.getLogger(TestAddDoc.class);
-    private static final String DEMO_2022 = "demo2025a";
+    private static final String DEMO_2022 = "demo2025b";
     public Configuration configure=null;
 
     @Test
     public void AppTest(){
-        readFileName("D:\\demo").forEach( fileName -> {
+        readFileName("/Users/lgu/game/demo").forEach( fileName -> {
             LOGGER.info("FileName: " + fileName);
             createDir(fileName);
-            String path = String.format("D:\\demo\\%s.xlsx", fileName);
+            String path = String.format("/Users/lgu/game/demo/%s.xlsx", fileName);
             Workbook wb = getWb(path);
             List<List<String>> list = getExcelRows(getSheet(wb, 0), 1, -1);
             list.forEach(x->{
@@ -62,7 +62,7 @@ public class TestAddDoc
                 dataMap.put("s4", getValue(x, 19));
                 dataMap.put("a2", getValue(x, 20));
 
-                createDoc(dataMap, DEMO_2022,String.format("D:\\demo\\class\\%s\\%s.doc",fileName, dataMap.get("name")));
+                createDoc(dataMap, DEMO_2022,String.format("/Users/lgu/game/demo/class/%s/%s.doc",fileName, dataMap.get("name")));
             });
         });
     }
@@ -82,7 +82,7 @@ public class TestAddDoc
     }
 
     private void createDir(String fileName){
-        File file = new File(String.format("D:\\demo\\class\\%s", fileName));
+        File file = new File(String.format("/Users/lgu/game/demo/class/%s", fileName));
         if(!file.exists()){
             file.mkdirs();
         }
